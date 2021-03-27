@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<div>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="../assetts/Style/w3.css">
+        <link rel="stylesheet" type="text/css" href="../assetts/Style/chkbox.css">
+        <link rel="stylesheet" type="text/css" href="../assetts/Style/questions.css">
+        <link rel="stylesheet" type="text/css" href="../assetts/Style/main.css">
+        <script src="../src/jQuery/jquery-3.3.1.min.js"></script>
+        <script src="../assetts/Data/questions.js"></script>
+        <script src="../assetts/Data/box.js"></script>
+        <script src="../src/Scripts/menu.js"></script>
+        <script src="../src/Scripts/workflow.js"></script>
+        <script src="../src/Scripts/main.js"></script>
+        <!-- <script src="../src/Scripts/cordova.js"></script> -->
+    </head>
+
+    <body>
+        <div id="coverApp" style="display: none;">
+        </div>
+    <div id="content">
+        <!--Modal usage language-->
+        <div id="ADTMC_lng" class="w3-modal">
+            <div class="w3-modal-content">
+                <div class="w3-card-4">
+                    <header class="w3-container w3-yellow">
+                        <h1>MedicEdge Usage</h1>
+                    </header>
+                    <div class="w3-container">
+                        <!-- <span onclick="document.getElementById('ADTMC_lng').style.display='none'"
+                            class="w3-button w3-xlarge w3-display-topright">x</span> -->
+                        <h2>Algorithm Directed Troop Medical Care</h2>
+                        <h3>A guide for patient screening</h3>
+                        <p>This software tool serves as a guide to provide commanders of military treatment facilities
+                            (MTFs) standardized clinical
+                            algorithms for use by screening personnel in determining the urgency and level of care that
+                            active duty (AD) Soldiers
+                            require and, when appropriate, in providing minor treatment to them.
+                        </p>
+                        <div>
+                            <input type="text" id="firstName" placeholder="First Name">
+                            <input type="text" id="lastName" placeholder="Last Name">
+                            <input type="checkbox" id="agree" name="vehicle1" value="Bike">
+                            <label for="agree">I agree to the end user license agreement (EULA) terms.</label></br> 
+                            <button id="activate" class="w3-button w3-round w3-red">Submit</button></br>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--End Modal-->
+        <!--Top Bar Menu-->
+        <div class="w3-bar w3-xlarge w3-top w3-grey w3-text-white w3-padding-top">
+            <button class="w3-button" onclick="w3_open()"><img src="../assetts/Images/home-solid.svg" class=""
+                    style="height:30px; width: 30px;vertical-align: auto;"></button><span style="font-size: x-large;float: right; padding-top: 9px;padding-right: 9px;">MedicEdge</span>
+        </div>
+        <!--End Menu-->
+        <div id="menu" style="margin-top: 52px;">
+            <div class="w3-dropdown-click w3-blue w3-border w3-round" style="width: 100%;">
+                <h4 class="w3-container" onclick="divOpenClose('nav14')">COVID 19</h4>
+                <div id="nav14" class="w3-dropdown-content w3-light-gray" style="width: 100%;">
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="covid19" onclick="divOpenClose('nav14')">
+                        COVID 19</h4>
+                </div>
+            </div>
+
+            <div class="w3-dropdown-click w3-blue w3-border w3-round" style="width: 100%;">
+                <h4 class="w3-container" style="width: 100%;" onclick="divOpenClose('nav1')">EAR, NOSE, AND THROAT (ENT)
+                    COMPLAINTS
+                </h4>
+                <div id="nav1" class="w3-dropdown-content w3-light-gray" style="width: 100%;">
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="sorethroat" onclick="divOpenClose('nav1')">Sore
+                        Throat/Hoarsness</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="earpain" onclick="divOpenClose('nav1')">Ear
+                        Pain/Drainage/Trauma</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="cold" onclick="divOpenClose('nav1')">Cold</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="ringing" onclick="divOpenClose('nav1')">Ringing
+                        in the Ears/Hearing Problem</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="nose" onclick="divOpenClose('nav1')">Nose
+                        Bleed/Nose Trauma</h4>
+                </div>
+            </div>
+
+            <div class="w3-dropdown-click w3-blue w3-border w3-round" style="width: 100%;">
+                <h4 class="w3-container" onclick="divOpenClose('nav2')">MUSCULOSKELETAL COMPLAINTS
+                </h4>
+                <div id="nav2" class="w3-dropdown-content w3-light-gray" style="width: 100%;">
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="back" onclick="divOpenClose('nav2')">Back Pain
+                    </h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="neck" onclick="divOpenClose('nav2')">Neck Pain
+                    </h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="elbow" onclick="divOpenClose('nav2')">Elbow Pain
+                    </h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="wrist" onclick="divOpenClose('nav2')">Wrist Pain
+                    </h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="shoulder" onclick="divOpenClose('nav2')">Shoulder Pain
+                    </h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="hand" onclick="divOpenClose('nav2')">Hand Pain
+                    </h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="hip" onclick="divOpenClose('nav2')">Hip Pain
+                    </h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="knee" onclick="divOpenClose('nav2')">Knee Pain
+                    </h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="ankle" onclick="divOpenClose('nav2')">Ankle Pain
+                    </h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="foot" onclick="divOpenClose('nav2')">Foot Pain
+                    </h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="extremitynonjoint" onclick="divOpenClose('nav2')">Extremity, Non-joint Pain
+                    </h4>                   
+                </div>
+            </div>
+
+            <div class="w3-dropdown-click w3-blue w3-border w3-round" style="width: 100%;">
+                <h4 class="w3-container" onclick="divOpenClose('nav3')">GASTROINTESTINAL COMPLAINTS
+                </h4>
+                <div id="nav3" class="w3-dropdown-content w3-light-gray" style="width: 100%;">
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="nausea" onclick="divOpenClose('nav3')">Nausea/Vomiting
+                    </h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="diarrhea" onclick="divOpenClose('nav3')">Diarrhea
+                    </h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="abdominalandflank" onclick="divOpenClose('nav3')">Abdominal and Flank Pain
+                    </h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="rectalpainitchingbleeding" onclick="divOpenClose('nav3')">Rectal Pain/Itching/Bleeding
+                    </h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="constipation" onclick="divOpenClose('nav3')">Constipation
+                    </h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="difficultywhenswallowing" onclick="divOpenClose('nav3')">Difficulty when Swallowing
+                    </h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="heartburn" onclick="divOpenClose('nav3')">Heartburn
+                    </h4>
+                </div>
+            </div>
+
+            <div class="w3-dropdown-click w3-blue w3-border w3-round" style="width: 100%;">
+                <h4 class="w3-container" onclick="divOpenClose('nav4')">CARDIORESPIRATORY COMPLAINTS</h4>
+                <div id="nav4" class="w3-dropdown-content w3-light-gray" style="width: 100%;">
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="shortnessofbreath" onclick="divOpenClose('nav4')">
+                        Shortness Of Breath</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="chestpain" onclick="divOpenClose('nav4')">
+                        Chest Pain</h4>
+                </div>
+            </div>
+
+            <div class="w3-dropdown-click w3-blue w3-border w3-round" style="width: 100%;">
+                <h4 class="w3-container" onclick="divOpenClose('nav5')">GENITOURINARY COMPLAINTS</h4>
+                <div id="nav5" class="w3-dropdown-content w3-light-gray" style="width: 100%;">
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="painfulurination" onclick="divOpenClose('nav5')">
+                        Painful/Frequent Urination</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="grointesticularpainorurethraldischarge" onclick="divOpenClose('nav5')">
+                        Groin/Testicular Pain or Urethral Discharge</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="sexuallytransmittedinfections" onclick="divOpenClose('nav5')">
+                        Sexually Transmitted Infection</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="problemswithvoiding" onclick="divOpenClose('nav5')">
+                        Problems with Voiding</h4>
+                </div>
+            </div>
+
+            <div class="w3-dropdown-click w3-blue w3-border w3-round" style="width: 100%;">
+                <h4 class="w3-container" onclick="divOpenClose('nav6')">NEUROPSYCHIATRIC COMPLAINTS</h4>
+                <div id="nav6" class="w3-dropdown-content w3-light-gray" style="width: 100%;">
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="dizzinessfaintnessblackout" onclick="divOpenClose('nav6')">
+                        Dizziness/Faintness/Blackout</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="headache" onclick="divOpenClose('nav6')">
+                        Headache</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="numbnesstinglingparalysisweakness" onclick="divOpenClose('nav6')">
+                        Numbness/Tingling/Paralysis/Weakness</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="drowsinessconfusion" onclick="divOpenClose('nav6')">
+                        Drowsiness/Confusion</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="depressionnervousnessanxietytension" onclick="divOpenClose('nav6')">
+                        Depression/Nervousness/Anxiety/Tension</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="mildtraumaticbraininjury" onclick="divOpenClose('nav6')">
+                        Minor Traumatic Brain Injury</h4>
+                </div>
+            </div>
+
+            <div class="w3-dropdown-click w3-blue w3-border w3-round" style="width: 100%;">
+                <h4 class="w3-container" onclick="divOpenClose('nav7')">CONSTITUTIONAL COMPLAINTS</h4>
+                <div id="nav7" class="w3-dropdown-content w3-light-gray" style="width: 100%;">
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="fatigue" onclick="divOpenClose('nav7')">
+                        Fatigue</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="feverchills" onclick="divOpenClose('nav7')">
+                        Fever/Chills</h4>
+                </div>
+            </div>
+
+            <div class="w3-dropdown-click w3-blue w3-border w3-round" style="width: 100%;">
+                <h4 class="w3-container" onclick="divOpenClose('nav8')">EYE COMPLAINTS</h4>
+                <div id="nav8" class="w3-dropdown-content w3-light-gray" style="width: 100%;">
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="eyepainrednessdischargeitchinginjury" onclick="divOpenClose('nav8')">
+                        Eye Pain/Redness/Discharge/Itching/Injury</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="eyelidproblem" onclick="divOpenClose('nav8')">
+                        Eyelid Problem</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="decreasedvisionseeingspotsrequestforglasses" onclick="divOpenClose('nav8')">
+                        Decreased Vision, Seeing Spots, Request for Glasses</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="seeingdoublediplopia" onclick="divOpenClose('nav8')">
+                        Seeing Double (Diplopia)</h4>
+                </div>
+            </div>
+
+            <div class="w3-dropdown-click w3-blue w3-border w3-round" style="width: 100%;">
+                <h4 class="w3-container" onclick="divOpenClose('nav9')">GYNECOLOGICAL COMPLAINTS</h4>
+                <div id="nav9" class="w3-dropdown-content w3-light-gray" style="width: 100%;">
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="breastproblems" onclick="divOpenClose('nav9')">
+                        Breast Problems</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="suspectspregnancy" onclick="divOpenClose('nav9')">
+                        Suspects Pregnancy</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="menstrualproblemsvaginalbleeding" onclick="divOpenClose('nav9')">
+                        Menstrual Problems, Vaginal Bleeding</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="vaginaldischargeitchingirritationpain" onclick="divOpenClose('nav9')">
+                        Vaginal Discharge, Itching, Irritation, or Pain</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="requestforpap" onclick="divOpenClose('nav9')">
+                        Request for PAP or routine Pelvic Examination</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="requestforinfooncontraception" onclick="divOpenClose('nav9')">
+                        Request for information on Contraception</h4>
+                </div>
+            </div>
+
+            <div class="w3-dropdown-click w3-blue w3-border w3-round" style="width: 100%;">
+                <h4 class="w3-container" onclick="divOpenClose('nav10')">DERMATOLOGICAL COMPLAINTS</h4>
+                <div id="nav10" class="w3-dropdown-content w3-light-gray" style="width: 100%;">
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="unknowncauseofskindisordercomplaint" onclick="divOpenClose('nav10')">
+                        Unknown Cause of Skin Disorder/Complaint</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="acne" onclick="divOpenClose('nav10')">
+                        Acne</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="shavingproblempseudofolliculitisbarbae" onclick="divOpenClose('nav10')">
+                        Shaving Problem-Pseudofolliculitis Barbae (Ingrown Hairs)</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="dandruff" onclick="divOpenClose('nav10')">
+                        Dandruff (Scaling of the Scalp)</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="hairloss" onclick="divOpenClose('nav10')">
+                        Hair Loss</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="athletesfoot" onclick="divOpenClose('nav10')">
+                        Athlete's Foot (Tinea Pedis)</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="jockitch" onclick="divOpenClose('nav10')">
+                        Jock Itch (Tinea Cruris)</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="scalingdepigmentedspotsonchestbackupperarms" onclick="divOpenClose('nav10')">
+                        Scaling, Depigmented Spots on the Chest, Back, and Upper Arms (Tinea Versicolor)</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="boils" onclick="divOpenClose('nav10')">
+                        Boils</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="feverblister" onclick="divOpenClose('nav10')">
+                        Fever Blister (Cold Sores)</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="skinabrasionlaceration" onclick="divOpenClose('nav10')">
+                        Skin Abrasion/Laceration</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="sutureremoval" onclick="divOpenClose('nav10')">
+                        Suture Removal</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="drugrashcontactdermatitis" onclick="divOpenClose('nav10')">
+                        Drug Rash, Contact Dermatitis</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="burnssunburn" onclick="divOpenClose('nav10')">
+                        Burns/Sunburn</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="frictionblistersonfeet" onclick="divOpenClose('nav10')">
+                        Friction Blisters on Feet</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="cornsonfeet" onclick="divOpenClose('nav10')">
+                        Corns on Feet</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="cutaneouplantarswarts" onclick="divOpenClose('nav10')">
+                        Cutaneous (Plantar) Warts</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="ingrowntoenail" onclick="divOpenClose('nav10')">
+                        Ingrown Toenail</h4>
+                </div>
+            </div>
+
+            <div class="w3-dropdown-click w3-blue w3-border w3-round" style="width: 100%;">
+                <h4 class="w3-container" onclick="divOpenClose('nav11')">ENVIRONMENTAL INJURY COMPLAINTS</h4>
+                <div id="nav11" class="w3-dropdown-content w3-light-gray" style="width: 100%;">
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="heatinjuryhyperthermia" onclick="divOpenClose('nav11')">
+                        Exertional Heat Illness Heat Injury/Hyperthermia(Heat Cramps, Heat Exhaustion, Heat Stroke)</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="hypothermia" onclick="divOpenClose('nav11')">
+                        Hypothermia</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="immersionfoot" onclick="divOpenClose('nav11')">
+                        Immersion Foot</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="chappedskinwindburn" onclick="divOpenClose('nav11')">
+                        Chapped Skin/Windburn</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="frostbite" onclick="divOpenClose('nav11')">
+                        Frostbite</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="crabslicepediculosis" onclick="divOpenClose('nav11')">
+                        Crabs/Lice (Pediculosis)</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="insectbitesnotcrabslice" onclick="divOpenClose('nav11')">
+                        Insect Bites (Not Crabs/Lice)</h4>
+                </div>
+            </div>
+
+            <div class="w3-dropdown-click w3-blue w3-border w3-round" style="width: 100%;">
+                <h4 class="w3-container" onclick="divOpenClose('nav12')">MISCELLANEOUS COMPLAINTS</h4>
+                <div id="nav12" class="w3-dropdown-content w3-light-gray" style="width: 100%;">
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="exposedtohepatitisorhiv" onclick="divOpenClose('nav12')">
+                        Exposed to Hepatitis B, Hepatitis C, or HIV</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="dentalproblems" onclick="divOpenClose('nav12')">
+                        Dental Problems</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="soresinthemouth" onclick="divOpenClose('nav12')">
+                        Sores in the Mouth</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="prescriptionrefill" onclick="divOpenClose('nav12')">
+                        Prescription Refill</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="requestsvasectomy" onclick="divOpenClose('nav12')">
+                        Requests a Vasectomy</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="needsimmunization" onclick="divOpenClose('nav12')">
+                        Needs an Immunization</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="lymphnodeenlargement" onclick="divOpenClose('nav12')">
+                        Lymph Node Enlargement</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="bloodpressurecheck" onclick="divOpenClose('nav12')">
+                        Blood Pressure Check</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="screeningforoverseaspcs" onclick="divOpenClose('nav12')">
+                        Medical Screening for Overseas Permanent Change of Station</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="weightreduction" onclick="divOpenClose('nav12')">
+                        Weight Reduction</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="complaintnotonthelist" onclick="divOpenClose('nav12')">
+                        Complaint not on the list</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="requestfornonprescriptionortravelingmedications" onclick="divOpenClose('nav12')">
+                        Request for Nonprescription or Traveling Medications</h4>
+                </div>
+            </div>
+
+            <div class="w3-dropdown-click w3-blue w3-border w3-round" style="width: 100%;">
+                <h4 class="w3-container" onclick="divOpenClose('nav13')">MISCELLANEOUS REASONS FOR RETURN</h4>
+                <div id="nav13" class="w3-dropdown-content w3-light-gray" style="width: 100%;">
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="nosignsofimprovement" onclick="divOpenClose('nav13')">
+                        No Signs of Improvement (Not Getting Better)</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="returnrequestedbyprovider" onclick="divOpenClose('nav13')">
+                        Return Requested by Provider</h4>
+                </div>
+            </div>
+        </div>
+        <!--Start Container Forms-->
+        <div class="main">
+        <div class="vitals w3-container w3-margin-small" style="margin-top: 75px;">
+            <!--Algorithm Header-->
+            <div id="topic" class="w3-container w3-padding w3-center w3-blue w3-xlarge" id="secTitle"
+                style="display: none; word-wrap: break-word;"></div>
+            <!--Vitals Form-->
+            <form id="popupVitals" class="w3-container w3-light-grey w3-text-blue w3-margin" style="display: none;">
+                <h2 class="w3-center">Vitals</h2>
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
+                    <div class="w3-rest"><label>Temperature</label>
+                        <input class="w3-input w3-border" name="temp" type="number" pattern="[0-9]*" inputmode="numeric"
+                            placeholder="Temperature">
+                    </div>
+                </div>
+
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
+                    <div class="w3-rest"><label>Pulse</label>
+                        <input class="w3-input w3-border" name="pulse" type="number" pattern="[0-9]*"
+                            inputmode="numeric" placeholder="Pulse">
+                    </div>
+                </div>
+
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-phone"></i></div>
+                    <div class="w3-rest"><label>Blood Pressure</label>
+                        <input class="w3-input w3-border" name="bp" pattern="[0-9%]*"
+                         placeholder="/" >
+                    </div>
+                </div>
+
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
+                    <div class="w3-rest"><label>Respiration</label>
+                        <input class="w3-input w3-border" name="respiration" type="number" pattern="[0-9]*"
+                            inputmode="numeric" placeholder="Respiration">
+                    </div>
+                </div>
+
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-phone"></i></div>
+                    <div class="w3-rest"><label>Pain Level</label>
+                        <input class="w3-input w3-border" name="pain" type="number" pattern="[0-9]*"
+                            inputmode="numeric" placeholder="Pain 1-10">
+                    </div>
+                </div>
+
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-pencil"></i></div>
+                    <div class="w3-rest"><label>LMP</label>
+                        <div class="w3-container w3-onethird"></div><input class="w3-input w3-border w3-twothird"
+                            name="lmp" type="date" placeholder="LMP">
+                    </div>
+                </div>
+
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-phone"></i></div>
+                    <div class="w3-rest"><label>O2 Sat</label>
+                        <input class="w3-input w3-border" name="02 Sat" type="number" pattern="[0-9%]*"
+                            inputmode="numeric" placeholder="%" >
+                    </div>
+                </div>
+
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-pencil"></i></div>
+                    <div class="w3-rest"><label>Allergies</label>
+                        <input class="w3-input w3-border" name="allergy" type="text" placeholder="Allergies">
+                    </div>
+                </div>
+            </form>
+            <p class="w3-center">
+                <button id="vitalsBtn" class="w3-button w3-round w3-section w3-blue w3-ripple w3-margin-left" style="display: none;">Next
+                </button>
+            </p>
+        </div>
+        <!--End Vitals Form-->
+        <!--Begin Red Flags Form-->
+        <div class="w3-container" id="redflags" class="w3-card-2 w3-middle" style="display: none;">
+            <header class="w3-container w3-red">
+                <h1>Red Flags</h1>
+                <ul id="flags" class="w3-ul w3-red"></ul>
+            </header>
+            <div class="w3-container">
+                <p id="diff"></p>
+            </div>
+            <div class="w3-container w3-middle"><button
+                    class="flagBtn w3-button w3-round w3-red w3-xxlarge w3-margin w3-round w3-yellow">Yes</button><button
+                    class="flagBtn w3-button w3-round w3-red w3-xxlarge w3-margin w3-round w3-yellow">No</button>
+                <div id="provDisp" class="w3-blue w3-text-red w3-center w3-xxlarge"></div>
+            </div>
+        </div>
+        <!--End Red Flags Form-->
+        <!--Questions Form-->
+        <div id="questions" class="w3-container" style="display: none;">
+            <div class="w3-container w3-text-black w3-xlarge">
+                <div id="qstn"></div>
+                <ul id="symplist" class="w3-ul"></ul>
+            </div>
+            <div id="disposition" class="w3-gray w3-text-red w3-center w3-xxlarge w3-round"></div>
+        </div>
+        <!--End Questions Form-->
+        <!--Differential Form-->
+        <div id="differential" class="w3-container w3-middle" style="display: none;">
+            <header class="w3-container w3-blue">
+                <h1>Partial Differential Diagnosis</h1>
+                <ul id="part" class="w3-ul"></ul>
+            </header>
+            <div class="w3-container w3-middle"><button
+                    class="contBtn w3-button w3-round w3-red w3-xxlarge w3-margin-top w3-margin-right w3-round w3-yellow">Continue</button>
+            </div>
+        </div>
+        <!--End Differential Form-->
+        <!--Final Form-->
+        <div id="final" class="w3-container w3-middle" style="display: none;">
+            <header class="w3-container w3-yellow">
+                <h1>Treatment Protocol</h1>
+            </header>
+
+            <div class="w3-container">
+                <p id="trtmnt"></p>
+            </div>
+            <div class="w3-container w3-blue">
+                <h1>Medic Note</h1>
+            </div>
+            <div class="w3-container">
+                <div id="vitalsnote"></div>
+            </div>
+            <div class="tooltip w3-container">
+                <p id="note"></p>
+                <p id="treat"></p>
+                <button class="w3-button w3-round w3-blue" id="cpyAhlta">Copy Note</button>
+                <div class="divider"></div><!--<button class="w3-button w3-blue" id="encounter">5181 PDF</button>-->
+            </div>
+            <br/>
+            <div class="w3-container w3-red">
+                <h1>Disposition</h1>
+            </div>
+            <div class="w3-container">
+                <p id="disp"></p>
+            </div>
+        </div>
+        </div>
+    
+        <!--End Final Form-->
+        <!--End Container-->
+</div>
+<!--Reset Bar-->
+<div class="w3-bar w3-bottom btnReset w3-blue" style="display: none;">
+    <div class="w3-bar-item">Reset</div>
+</div>
+<!--End Reset Bar-->
+</div>
+</body>
