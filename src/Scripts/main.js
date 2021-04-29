@@ -3,11 +3,13 @@ $(document).ready(function () {
 
 	var chkBoxArr = []
 
-	
+	document.addEventListener('deviceready', onDeviceReady, false)
+
+	function onDeviceReady(){
 	checkConnection()
 
 	checkSupport()
-	
+	}
 
 
 	function checkConnection(){
@@ -32,15 +34,16 @@ $(document).ready(function () {
 	function checkSupport(){
 
 		if(navigator.onLine){
-				const muserName = localStorage.getItem("MedicEdgeuserName")
+				const deviceID = device.uuid
 				const domains = []
 				const active = localStorage.getItem("medicedgeEula")
-				const license = "SHS5f5460313b1c8"
+                const orgKey = localStorage.getItem("medicedgeLic")
 
 				if(active){
+                    
 
 					var settings = {
-						"url": "https://support.smarthealthsol.com/?secret_key=5f2f082dba4476.77393473738&slm_action=slm_check&license_key=" + license + "&registered_domain="+ muserName +"",
+						"url": "https://support.smarthealthsol.com/?secret_key=5f2f082dba4476.77393473738&slm_action=slm_check&license_key=" + orgKey + "&registered_domain="+ deviceID +"",
 						"method": "GET",
 						"timeout": 0,
 						"headers": {
@@ -50,9 +53,9 @@ $(document).ready(function () {
 						},
 					};
 
-					
-					
-					$.ajax(settings).done(function (response) {
+
+
+					$.ajax(settings).promise().done(function (response) {
 						console.log(response);
 						
 						for(var i=0; i<response.registered_domains.length; i++){
@@ -116,20 +119,23 @@ $(document).ready(function () {
 
 		
 			$("#activate").click(function(){
+                $("#menu").hide()
 				
-				if($("#agree").is(":checked") && $("#firstName").val() && $("#lastName").val()){
+				if($("#agree").is(":checked")){
 				//add logic to try activation
 
 					if(navigator.onLine){
-						const muserName = $("#firstName").val() + '.' + $("#lastName").val()
+						const deviceID = device.uuid
+                        const subscriberId = $("#subscriber_Id").val();
+                        const subscriberEmail = $("#subscriber_Email").val();
 						const domains = []
 						const active = localStorage.getItem("medicedgeEula")
-						const license = "SHS5f5460313b1c8"
+						
 
 							if(!active){
 			
 								var settings = {
-									"url": "https://support.smarthealthsol.com/?secret_key=5f2f082dba4476.77393473738&slm_action=slm_activate&license_key=" + license + "&registered_domain="+ muserName +"",
+									"url": "https://support.smarthealthsol.com/?secret_key=5f2f082dba4476.77393473738&slm_action=slm_activate&license_key=" + subscriberId + "&registered_domain="+ deviceID +"&item_reference="+ subscriberEmail,
 									"method": "GET",
 									"timeout": 0,
 									"headers": {
@@ -141,18 +147,22 @@ $(document).ready(function () {
 			
 								
 								
-								$.ajax(settings).done(function (response) {
+								$.ajax(settings).promise().done(function (response) {
 									console.log(response);
 									
 									if(response.result == "success"){
 										alert("Activation complete.")
 										localStorage.setItem("medicedgeEula", "signed")
-										localStorage.setItem("MedicEdgeuserName", muserName) 
+                                        localStorage.setItem("medicedgeLic", subscriberId)
+                                        window.location.reload()
+                                        
 										$("#ADTMC_lng").hide()
 									}else{
 										//add response
 										alert(response.message + ", please contact support desk at support.smarthealthsol.com")
 									}
+                                    
+                                    $("html, body").animate({ scrollTop: 0 }, "slow");
 								});
 							
 							}else{
@@ -165,11 +175,12 @@ $(document).ready(function () {
 						}
 
 				}else{
-					alert("Must click agree and fill out First and Last Name before activation")
+					alert("Must click agree before activation")
 				}
 
 			});
 				
 			
-
+			sessionStorage.setItem("symptoms", "")
+            
 });

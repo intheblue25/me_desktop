@@ -13,6 +13,7 @@
         <script src="../src/Scripts/menu.js"></script>
         <script src="../src/Scripts/workflow.js"></script>
         <script src="../src/Scripts/main.js"></script>
+        <script src="../src/Scripts/search.js"></script>
         <!-- <script src="../src/Scripts/cordova.js"></script> -->
     </head>
 
@@ -30,21 +31,21 @@
                     <div class="w3-container">
                         <!-- <span onclick="document.getElementById('ADTMC_lng').style.display='none'"
                             class="w3-button w3-xlarge w3-display-topright">x</span> -->
-                        <h2>Algorithm Directed Troop Medical Care</h2>
-                        <h3>A guide for patient screening</h3>
-                        <p>This software tool serves as a guide to provide commanders of military treatment facilities
-                            (MTFs) standardized clinical
-                            algorithms for use by screening personnel in determining the urgency and level of care that
-                            active duty (AD) Soldiers
-                            require and, when appropriate, in providing minor treatment to them.
-                        </p>
-                        <div>
-                            <input type="text" id="firstName" placeholder="First Name">
-                            <input type="text" id="lastName" placeholder="Last Name">
-                            <input type="checkbox" id="agree" name="vehicle1" value="Bike">
-                            <label for="agree">I agree to the end user license agreement (EULA) terms.</label></br> 
-                            <button id="activate" class="w3-button w3-round w3-red">Submit</button></br>
-                        </div>
+                            <h2>Algorithm Directed Troop Medical Care</h2>
+                            <h3>A guide for patient screening</h3>
+                            <p>Guidance published by the United States Army Medical Command as of November 2019, MEDCOM Pamphlet 40-7-21, and reproduced in this tool with MEDCOM permission.</p>
+                            <p>This software tool serves as a guide to provide commanders of military treatment facilities (MTFs), with the advice of the supervising medical director and Installation Director of Health Services,
+                                standardized clinical algorithms for use by screening personnel in determining the urgency and level of care that
+                                active duty (AD) Soldiers require and, when appropriate, in providing minor treatment to them.
+                            </p>
+                            <div>
+                                <input class="w3-input w3-border" type="text" id="subscriber_Id" placeholder="subscriber id"> <br/>
+                                <input class="w3-input w3-border" type="text" id="subscriber_Email"  placeholder="email"> <br/>
+                                <input type="checkbox" id="agree">
+                                <label for="agree">I agree to the end user license agreement (EULA) terms which can be found at the Smart Health Solutions support website.</label></br>
+                                <label style="word-break: break-all;">https://support.smarthealthsol.com/eula/medicedgeeula.pdf</label><br/>
+                                <button id="activate" class="w3-button w3-round w3-red">Submit</button><br/>
+                            </div>
                     </div>
 
                 </div>
@@ -52,20 +53,27 @@
         </div>
         <!--End Modal-->
         <!--Top Bar Menu-->
-        <div class="w3-bar w3-xlarge w3-top w3-grey w3-text-white w3-padding-top">
-            <button class="w3-button" onclick="w3_open()"><img src="../assetts/Images/home-solid.svg" class=""
-                    style="height:30px; width: 30px;vertical-align: auto;"></button><span style="font-size: x-large;float: right; padding-top: 9px;padding-right: 9px;">MedicEdge</span>
+        <div id="topbar" class="w3-bar w3-xlarge w3-top w3-grey w3-text-white w3-padding-top">
+            <!-- <div style="font-size: x-large;float: left; padding-top: 20px;padding-left: 9px;">MedicEdge</div> -->
+            <div style="float: left; padding-left: 0px; width: 20%;">
+                    <button class="w3-button" onclick="w3_open()">
+                        <img src="../assetts/Images/home-solid.svg" class="" style="height:30px; width: 30px; vertical-align: auto">
+                    </button>
+            </div>
+            <div style="font-size: x-large;float: left; padding-left: 9px;padding-top: 9px; width: 60%; text-align: center;">MedicEdge</div>
+           <div style="float: right; padding-top: 9px; width: 20%; text-align: right;">
+                   <button class="w3-button" onclick="searchToggle()">
+                       <img src="../assetts/Images/search.svg" class="" style="height:30px; width: 30px; vertical-align: auto">
+                   </button>
+            </div>
+            <div>
+                <input id="searchInput" oninput="search(this)" autocomplete="off" type="search" style="display: inline-block; display: none;width: 100%;border: 4px solid gray;">
+            </div>
+            <div id="result" style="color: black;"></div>
+            
         </div>
         <!--End Menu-->
         <div id="menu" style="margin-top: 52px;">
-            <div class="w3-dropdown-click w3-blue w3-border w3-round" style="width: 100%;">
-                <h4 class="w3-container" onclick="divOpenClose('nav14')">COVID 19</h4>
-                <div id="nav14" class="w3-dropdown-content w3-light-gray" style="width: 100%;">
-                    <h4 class="menuBtn w3-container w3-hover-blue" id="covid19" onclick="divOpenClose('nav14')">
-                        COVID 19</h4>
-                </div>
-            </div>
-
             <div class="w3-dropdown-click w3-blue w3-border w3-round" style="width: 100%;">
                 <h4 class="w3-container" style="width: 100%;" onclick="divOpenClose('nav1')">EAR, NOSE, AND THROAT (ENT)
                     COMPLAINTS
@@ -306,6 +314,8 @@
                         Complaint not on the list</h4>
                     <h4 class="menuBtn w3-container w3-hover-blue" id="requestfornonprescriptionortravelingmedications" onclick="divOpenClose('nav12')">
                         Request for Nonprescription or Traveling Medications</h4>
+                    <h4 class="menuBtn w3-container w3-hover-blue" id="covid19" onclick="divOpenClose('nav13')">
+                        COVID-19</h4>
                 </div>
             </div>
 
@@ -331,39 +341,39 @@
                 <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
                     <div class="w3-rest"><label>Temperature</label>
-                        <input class="w3-input w3-border" name="temp" type="number" pattern="[0-9]*" inputmode="numeric"
-                            placeholder="Temperature">
+                        <input class="w3-input w3-border" id="tempInput" name="Temp" inputmode="decimal" onblur="validateVital(this)"
+                            value="&#176; F" >
                     </div>
                 </div>
 
                 <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
                     <div class="w3-rest"><label>Pulse</label>
-                        <input class="w3-input w3-border" name="pulse" type="number" pattern="[0-9]*"
-                            inputmode="numeric" placeholder="Pulse">
+                        <input class="w3-input w3-border" id="pulseInput"  name="Pulse" type="number" pattern="[0-9]*"
+                            inputmode="numeric" onblur="validateVital(this)" placeholder="Pulse">
                     </div>
                 </div>
 
                 <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-phone"></i></div>
                     <div class="w3-rest"><label>Blood Pressure</label>
-                        <input class="w3-input w3-border" name="bp" pattern="[0-9%]*"
-                         placeholder="/" >
+                        <input class="w3-input w3-border" id="bpInput" name="BP" pattern="[0-9%]*" onblur="validateVital(this)" inputmode="decimal"
+                          value="/" >
                     </div>
                 </div>
 
                 <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
                     <div class="w3-rest"><label>Respiration</label>
-                        <input class="w3-input w3-border" name="respiration" type="number" pattern="[0-9]*"
-                            inputmode="numeric" placeholder="Respiration">
+                        <input class="w3-input w3-border" id="resInput" name="Respiration" type="number" pattern="[0-9]*"
+                            inputmode="numeric" onblur="validateVital(this)" placeholder="Respiration">
                     </div>
                 </div>
 
                 <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-phone"></i></div>
                     <div class="w3-rest"><label>Pain Level</label>
-                        <input class="w3-input w3-border" name="pain" type="number" pattern="[0-9]*"
+                        <input class="w3-input w3-border" name="Pain" type="number" pattern="[0-9]*"
                             inputmode="numeric" placeholder="Pain 1-10">
                     </div>
                 </div>
@@ -372,22 +382,22 @@
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-pencil"></i></div>
                     <div class="w3-rest"><label>LMP</label>
                         <div class="w3-container w3-onethird"></div><input class="w3-input w3-border w3-twothird"
-                            name="lmp" type="date" placeholder="LMP">
+                            name="LMP" type="date" placeholder="LMP">
                     </div>
                 </div>
 
                 <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-phone"></i></div>
                     <div class="w3-rest"><label>O2 Sat</label>
-                        <input class="w3-input w3-border" name="02 Sat" type="number" pattern="[0-9%]*"
-                            inputmode="numeric" placeholder="%" >
+                        <input class="w3-input w3-border" id="satInput" name="02 Sat" pattern="[0-9%]*"
+                            inputmode="decimal" onblur="validateVital(this)" value="%" >
                     </div>
                 </div>
 
                 <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-pencil"></i></div>
                     <div class="w3-rest"><label>Allergies</label>
-                        <input class="w3-input w3-border" name="allergy" type="text" placeholder="Allergies">
+                        <input class="w3-input w3-border" name="Allergy" type="text" placeholder="Allergies">
                     </div>
                 </div>
             </form>

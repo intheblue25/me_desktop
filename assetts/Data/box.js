@@ -5,13 +5,13 @@ var boxData = {
             "partial": [{ text: "Viral Infections" }, { text: "Bacterial Infections" }, { text: "Meningitis" }, { text: "Neck Deep Tissue Infection" }, { text: "Candida Infection" }, { text: "Strep Throat" }],
             "flags": [{ text: "Shortness of Breath" }, { text: "Stridor" }, { text: "Deviated Uvula" }, { text: "Drooling/Trouble Swallowing" }, { text: "Stiff Neck" }],
             "activity": ["None"],
-            "protocol": ["MCP sore throat; For pain: Lozenges first line. Ibuprofen second line, for elevated temperature: acetaminophen, salt water gargles and drink warm fluids for inflammation.<br/>MCP hoarseness: Rest vocal chords and avoid irritants (cigarette smoking, yelling heartburn).<br/>Return if not improving in 3 days or immediately if worsening symptoms or Red Flags."]
+            "protocol": ["MCP sore throat; For pain: Lozenges first line. Ibuprofen second line, for elevated temperature: acetaminophen, salt water gargles and drink warm fluids for inflammation.<br/>MCP hoarseness: Rest vocal chords and avoid irritants (cigarette smoking, yelling, heartburn).<br/>Return if not improving in 3 days or immediately if worsening symptoms or Red Flags."]
         }
 
     ],
     earpain: [
         {
-            "partial": [{ text: "Otitis Media/Externa" }, { text: "Eustachian tube dysfunction" }, { text: "Nasopharyngeal pathology" }, { text: "Deep space head/neck" }, { text: "infections" }, { text: "Meningitis" }, { text: "Mastoiditis" }, { text: "Ruptured Ear Drum" }, { text: "TMJ Dysfunction" }],
+            "partial": [{ text: "Otitis Media/Externa" }, { text: "Eustachian tube dysfunction" }, { text: "Nasopharyngeal pathology" }, { text: "Deep space head/neck infection" }, { text: "infections" }, { text: "Meningitis" }, { text: "Mastoiditis" }, { text: "Ruptured Ear Drum" }, { text: "TMJ Dysfunction" }],
             "flags": [{ text: "Stiff Neck and Fever" }, { text: "Posterior Ear Pain and/or Mastoid Erythema" }],
             "activity": [{ text: "None" }],
             "protocol": ["MCP for Mild Otitis Externa: Soak wick of cotton ball with ear drops. Place in the ear for 24 hours while using the drops. Remove the cotton wick and continue drops for 1 week (3 days after the symptoms have resolved). Keep the ear canal dry.<br/>MCP for TMJ: Refer to dental if history of teeth grinding, ibuprofen as needed for pain, instruct on avoidance of triggers and home jaw exercises.<br/>Return if not improving in 3 days, worsening symptoms, dizziness, loss of hearing, stiff neck."]
@@ -88,7 +88,7 @@ var boxData = {
     hip:[
         {
             "partial": [{ text: "Arthritis" }, { text: "Stress Fracture" }, { text: "Trochanteric Bursitis" }, { text: "Tendinitis" }, { text: "Muscle Strain" }, { text: "Hernia" }, { text: "Referred Pain"}],
-            "flags": [{ text: "Abnormal PMS" }, { text: "Deformity" }, { text: "High Energy Trauma" }, { text: "Suspect Stress Fracture (increased with weight bearing or during exercise, endurance training, change in exercise routine)"},{ text:"Severe Pain" }],
+            "flags": [{ text: "Abnormal PMS" }, { text: "Deformity" }, { text: "High Energy Trauma" }, { text: "Suspect Stress Fracture (increased pain with weight bearing or during exercise, endurance training, change in exercise routine)"},{ text:"Severe Pain" }],
             "activity": [{ text: "No running, jumping but may walk up to ¼ mile at own pace/ distance and stand up to 20min" }, {text: "May Lift, carry, push, pull up to 25 lbs"}, {text: "No repetitive lifting from floor"}, {text: "Perform stretching, core strengthening home regiment during PT"}],
             "protocol": ["Provide home exercise program. Activity modification as appropriate. Intermittent ice or heat for inflammation. Medication: analgesic balm for mild pain, ibuprofen (1st line) and ketorolac (2nd line) for moderate pain as needed. Refer to PT if direct access is available."]
         }
@@ -98,13 +98,13 @@ var boxData = {
             "partial": [{ text: "Sprain/Strain" }, { text: "Fracture" }, { text: "Tendon Rupture" }, { text: "Arthritis" }, { text: "Bursitis" }, { text: "Tendinopathy" }],
             "flags": [{ text: "Abnormal Distal Pulse" }, { text: "Abnormal Sensation" }, { text: "Deformity" }],
             "activity": [{ text: "No running, jumping, rucking but may walk up to ¼ mile at own pace/ distance and stand up to 20min" }, {text: "May Lift, carry, up to 25 lbs"},{text: "Limit walking over uneven terraine"},{text: "Perform stretching, strengthening home regiment during PT"}, {text: "May wear brace or wrap"}],
-            "protocol": ["Provide home exercise program, wrap the andl, and activity modification as appropriate. Intermittent ice for inflammation. Elevate for swelling. Medication: analgesic balm for mile pain, ibuprofen(1st line) and ketorolac (2nd line) for moderate pain as needed. Efer to PT if direct access is available. Follow-up: Immediate follow-up for a DP1 or DP2 symptoms. Return to clinic if worsening or not improving within 1 week."]
+            "protocol": ["Provide home exercise program, wrap the ankle, and activity modification as appropriate. Intermittent ice for inflammation. Elevate for swelling. Medication: analgesic balm for mile pain, ibuprofen(1st line) and ketorolac (2nd line) for moderate pain as needed. Refer to PT if direct access is available. Follow-up: Immediate follow-up for a DP1 or DP2 symptoms. Return to clinic if worsening or not improving within 1 week."]
         }
     ],
     foot:[
         {
-            "partial": [{ text: "Injury" }, { text: "Overuse" }, { text: "Plantar Fasciitis" }, { text: "Tarsal Tunnel Syndrome" }, { text: "Achilles Tendinopathy" }, { text: "Ingrown Toenail" }, {text: "Bunion"}],
-            "flags": [{ text: " Abnormal Distal Pulse " }, { text: " Abnormal Sensation" }, { text: " Deformity" }, { text: " Suspect Stress Fracture (increased with weight bearing or during exercise, endurance training, change in exercise routine)" }],
+            "partial": [{ text: "Injury" }, { text: "Overuse" }, { text: "Plantar Fasciitis" }, { text: "Tarsal Tunnel Syndrome" }, { text: "Achilles Tendinopathy" }, { text: "Ingrown Toenail" }, {text: "Bunion(s)"}],
+            "flags": [{ text: " Abnormal Distal Pulse " }, { text: " Abnormal Sensation" }, { text: " Deformity" }, { text: " Suspect Stress Fracture (increased pain with weight bearing or during exercise, endurance training, change in exercise routine)" }],
             "activity": [{ text: "No running, jumping, rucking but may walk up to ¼ mile at own pace/ distance and stand up to 20min " }, {text: "May Lift, carry, up to 25 lbs "}, {text: "Perform stretching, strengthening home regiment during PT"}],
             "protocol": ["Ingrown Toenail: Soak in soap and water for 20 mins three times per day. Place cotton under the toenail. Consult provider if toenail removal required(protocol Ingrown Toenail J-18. <br/> Subungual Hematoma: Discuss with supervisor. Treat. Soak in soap and water twice a day for 3 days. <br/>Plantar fasciitis: Home exercise/stretching program, intermittent ice for inflammation, ibuprofen as needed for pain. Consider activity modification and arch support. Refer to PT if direct access is available. <br/>Blisters, Callus (see J-15  Friction Blisters on Feet). Use moleskin. Consider activity modification. <br/>Plantar Wart(see J-16 Corns on Feet).Discuss with supervising provider. <br/>Return to clinic if worsens, new symptoms develop, or not improving within 1 week or interferes with performance of normal duties/activities."]
         }
@@ -138,13 +138,13 @@ var boxData = {
             "partial": [{ text: "Gastroesophageal Reflux" }, { text: "Myocardial Infarction" }, { text: "Stomach/Duodenal Ulcer" }, { text: "Cancer" }, { text: "Pancreatitis" }],
             "flags": [{ text: "Vomiting Blood or Coffee Grinds" }, { text: "Melena" }, { text: "Angina, SOB" }, { text: "Radiation to Back" }],
             "activity": [{ text: "None" }],
-            "protocol": ["Medication: ranitidine as needed (up to 2 doses in 24 hours). <br/>Lifestyle modification: weight loss if indicated, smoking cessation if indicated, elevation of head of bed, avoidance of foods that make it worse. <br/>Return to clinic if any of the red flags or symptoms develop, not improved with Minor Care protocol, or taking ranitidine more than once per week on average."]
+            "protocol": ["Medication: famotidine as needed (up to 2 doses in 24 hours). <br/>Lifestyle modification: weight loss if indicated, smoking cessation if indicated, elevation of head of bed, avoidance of foods that make it worse. <br/>Return to clinic if any of the red flags or symptoms develop, not improved with Minor Care protocol, or taking ranitidine more than once per week on average."]
         }
     ],
     shortnessofbreath:[
         {
             "partial": [{ text: "Asthma" }, { text: "Anxiety" }, { text: "Myocardial Infarction" }, { text: "Pulmonary Embolism" }, { text: "Pneumonia, Bronchitis" }, { text: "Deconditioning" }],
-            "flags": [{ text: "Cyanosis" }, { text: "Ancillary muscles" }, { text: "Sp02<90%" }, { text: "SIRS Criteria" }, { text: "Airway Swelling" }, { text: "Hives" }, { text: "Altered Mental Status(AMS)" }],
+            "flags": [{ text: "Cyanosis" }, { text: "Ancillary muscles" }, { text: "Sp02<90%" }, { text: "SIRS Criteria(J9)" }, { text: "Airway Swelling" }, { text: "Hives" }, { text: "Altered Mental Status" }],
             "activity": [{ text: "Cold Symptoms <br/>Aerobic training at own pace/distance x 3 days <br/> Limit exposure to temperatures below <50 degrees F" }],
             "protocol": ["Cold or allergy symptoms: A3 Minor Care Protocol. <br/>Panic attack symptoms: Check EKG. Monitor pulse oximeter. Supervised deep breathing exercises. Referral to provider now if oxygenation decreases or symptoms do not resolve. Refer to behavioral health after dyspnea symptoms have resolved."]
         }
@@ -154,7 +154,7 @@ var boxData = {
             "partial": [{ text: "Myocardial Infarction" }, { text: "Pulmonary Embolism"}, { text: "Pneumonia, Bronchitis" }, { text: "Anxiety" }, { text: "Heartburn" }, { text: "Musculoskeletal" }],
             "flags": [{ text: "Irregular Pulse" }, { text: "H/O or FH of Heart Problems" }, { text: "Shoulder, jaw pain or pressure" }],
             "activity": [{ text: "MSK Chest Pain <br/>May lift, push up to 25 lbs Cold Symptoms <br/>Aerobic training at own pace/distance x 3 days <br/>Limit exposure to temperatures below <50 degrees F" }],
-            "protocol": ["MCP for Cold symptoms: A-3 Protocol<br/>Heartburn: C-7 (Heartburn) Protocol. <br/>MCP for panic attack symptoms (chest tightness, palpitations, anxious, lightheaded):  Check EKG.  If EKG is normal, initiate observed deep breathing exercises.  Place a pulse oximeter on the Soldier&#39;s finger.  Have the Soldier lay back at a 45 degree angle with legs uncrossed and initiate diaphragmatic breathing exercises with deep, slow inhalation over 4 seconds and exhalation over another 4 second count.  If the SpO2 starts to drop, disposition the Soldier as &#34;Provider Now&#34;.  Refer Soldier to behavioral health after initial panic attack decreases in intensity.<br/>MCP for musculoskeletal chest pain:  Pain must be reproducible and directly correspond to a supporting history.  Medications: ibuprofen as needed for muscle complaints.  Return to clinic if pain increases, lasts longer than three days, shortness of breath/ dizziness/ or new symptoms develop.  <b>Must discuss with supervising privileged provider before Soldier leaves screening area.</b>"]
+            "protocol": ["MCP for Cold like symptoms<br/>Heartburn: C-7 (Heartburn) Minor Care Protocol. <br/>MCP for panic attack symptoms (chest tightness, palpitations, anxious, lightheaded):  Check EKG. Monitor pulse oximeter. Supervised deep breathing exercises. Refer to behavioral health after dyspnea symptoms have resolved.<br/>MCP for musculoskeletal chest pain:  Medications: ibuprofen or acetaminophin for pain, analgesic balm for muscle/tendons. Temporary profile x3 days if needed. Return to clinic if pain increases, not improved in four days, shortness of breath/ dizziness/ or new symptoms develop."]
         }
     ],
     sexuallytransmittedinfections:[
@@ -202,7 +202,7 @@ var boxData = {
             "partial": [{ text: "Malaise" }, { text: "Cold Symptoms" }, { text: "Sore Throat, Ear Pain " }, { text: "Heat/Cold Injury" }, { text: "Diarrhea" }, { text: "Pain with urination" }],
             "flags": [{ text: "Heat Injury" }, { text: "Stiff Neck" }, { text: "Light sensitivity" }, { text: "Pregnant" }, {text: "Seizure"}, {text: "Lightheaded"}],
             "activity": [{ text: "For a Fever <br/>Consider Quarters x 24-48 hours (must discuss with supervising privileged provider) " }],
-            "protocol": ["OTC Medication: acetaminophen as needed for elevated temperature (No other medications with acetaminophen. No alcohol), ibuprofen as needed for malaise.<br/>Stay hydrated by drinking fluids to keep your urine mostly clear. Get plenty of rest.<br/>Return if red flags, new symptoms, lasts longer than 48 hours, or fever not controlled with acetaminophen."]
+            "protocol": ["OTC Medication: acetaminophen or ibuprofen as needed for elevated temperature (No other medications with acetaminophen. No alcohol), ibuprofen as needed for malaise.<br/>Stay hydrated by drinking fluids to keep your urine mostly clear. Get plenty of rest.<br/>Return if red flags, new symptoms, lasts longer than 48 hours, or fever not controlled with acetaminophen or ibuprofen."]
         }
     ],
     eyepainrednessdischargeitchinginjury: [
@@ -258,7 +258,7 @@ var boxData = {
             "partial": [{ text: "Nonfreezing Cold Injury" }, { text: "Cold Urticaria" }, { text: "Raynaud Phenomenon" }, { text: "Frostbite" }],
             "flags": [{ text: "Gangrene/Necrosis" }, { text: "Hemorrhagic Blisters" }, { text: "Hypothermia" }, { text: "Frostbite" }, { text: "Trauma"}],
             "activity": [{ text: "-Limit activities for 3 days<br/>Elevate affected extremity x 3 days" }],
-            "protocol": ["Rest, elevate, and air dry affected extremity at room temperature. Limit activities for 3 days.<br/>Rehydrate with warm IVF, Tetanus prophylaxis (AEM approval required). Toradol for moderate pain. Ibuprofen as needed for minor pain. Amitryptyline at night as needed for pain (provider prescription required).<br/>RTC if symptoms are worsening, signs of infection, new symptoms develop, or symptoms are not controlled with the MCP not improving after 1 week."]
+            "protocol": ["Rest, elevate, and air dry affected extremity at room temperature. Limit activities for 3 days.<br/>Rehydrate with warm IVF, Tetanus prophylaxis (AEM approval required). Ketorolac for moderate pain. Ibuprofen as needed for minor pain. Amitryptyline at night as needed for pain (provider prescription required).<br/>RTC if symptoms are worsening, signs of infection, new symptoms develop, or symptoms are not controlled with the MCP not improving after 1 week."]
         }
     ],
     chappedskinwindburn:[
@@ -459,7 +459,7 @@ var boxData = {
             "partial": [{ text: "Heavy Menstrual Cycle" }, { text: "Irregular Menstrual Cycle" }, { text: "Birth Control Side Effect" }, { text: "Miscarriage" }, { text: "Ectopic Pregnancy" }],
             "flags": [{ text: "Sexual Assault" }, { text: "Trauma" }, { text: "Severe Pain" }, { text: "Pregnant" }],
             "activity": [{ text: "Aerobic exercise at own pace/distance x3 days <br/> Must have access to restroom every hour" }],
-            "protocol": ["Menstrual Cramps: provide NSAID like naproxen or ibuprofen as needed for pain to be taken with food for up to 7 days. Toradol as a 1x dose for moderate pain. A warm compress may also be placed over the abdomen to help with discomfort. <br/> RTC if symptoms are worsening, new symptoms develop, or symptoms are not controlled with the MCP"]
+            "protocol": ["Menstrual Cramps: provide NSAID like naproxen or ibuprofen as needed for pain to be taken with food for up to 7 days. Ketorolac as a 1x dose for moderate pain. A warm compress may also be placed over the abdomen to help with discomfort. <br/> RTC if symptoms are worsening, new symptoms develop, or symptoms are not controlled with the MCP"]
         }
     ],
     vaginaldischargeitchingirritationpain:[
@@ -604,12 +604,12 @@ var boxData = {
             "partial": [{ text: "Corn" }, { text: "Stephen Johnson Syndrome" }, { text: "Staphylococcal scalded skin syndrome" }],
             "flags": [{ text: "Fever/malaise" }, { text: "Epidermal sloughing" }],
             "activity": [{ text: "No running, rucking, or jumping <br/> Walk at own pace/ distance" }],
-            "protocol": ["Wash area with betadine and apply an antibacterial ointment to the blister only. <br/> Cover a large area of surrounding undamaged skin and the treated blister with a protective dressing of moleskin between treatments. An adhesive solution such as tincture of benzoin or a surgical adhesive may be applied to the skin around the blister to improve  the adhesion of the moleskin. <br/> Wear two pairs of socks while wearing combat boots (a thin pair of nonabsorbent, non-cotton socks under the boot socks) and to check for proper fit of boots. <br/> <br/> Instruct the patient to return for further evaluation if: <ul> <li>The protective dressing begins to come off.</li> <li>He develops blisters that make wearing shoes or boots impossible.</li> <li>He is disabled by pain.</li> <li>He has signs of infection.</li> </ul> <br/> The patient should be reevaluated every 24 hours"]
+            "protocol": ["Wash area with povidone-iodine and apply an antibacterial ointment to the blister only. <br/> Cover a large area of surrounding undamaged skin and the treated blister with a protective dressing of moleskin between treatments. An adhesive solution such as tincture of benzoin or a surgical adhesive may be applied to the skin around the blister to improve  the adhesion of the moleskin. <br/> Wear two pairs of socks while wearing combat boots (a thin pair of nonabsorbent, non-cotton socks under the boot socks) and to check for proper fit of boots. <br/> <br/> Instruct the patient to return for further evaluation if: <ul> <li>The protective dressing begins to come off.</li> <li>He develops blisters that make wearing shoes or boots impossible.</li> <li>He is disabled by pain.</li> <li>He has signs of infection.</li> </ul> <br/> The patient should be reevaluated every 24 hours"]
         }
     ],
     cornsonfeet:[
         {
-            "partial": [{ text: "Callus" }, { text: "Plantar Wart" }, { text: "Corn" }, { text: "Bunion" }],
+            "partial": [{ text: "Callus" }, { text: "Plantar Wart" }, { text: "Corn" }, { text: "Bunion(s)" }],
             "flags": [{ text: "None" }],
             "activity": [{ text: "No running, rucking, or jumping" }, { text: "Walk at own pace/ distance"}],
             "protocol": ["RTC if symptoms are worsening, new symptoms develop, or symptoms are not controlled with the MCP."]
@@ -706,10 +706,10 @@ var boxData = {
     ],
     covid19:[
         {
-            "partial": [{ text: "Asthma" },{ text: "Chronic lung disease" },{ text: "Serious heart condition" },{ text: "Weakened ability to cough" }],
-            "flags": [{ text: "Fever or Chills"}, { text: "Cough"}, { text: "Shortness of breath or difficulty breathing"}, { text: "Fatigue"},{ text: "Muscle or body aches"}, {text: "Headache"}, {text: "New loss of taste or smell"}, {text: "Sore throat"}, {text: "Congestion or runny nose"}, {text: "Nausea or vomiting"}, {text: "Diarrhea"}],
-            "activity": [{ text: "Not Applicable" }],
-            "protocol": ["When in public:<br/><ul><li>Don't gather in groups</li><li>Avoid crowded places</li><li>Wear a cloth face covering</li></ul>"]
+        "partial": [{ text: "Influenza" },{ text: "Pneumonia" },{ text: "Acute bacterial rhinosinusitis" },{ text: "Bacterial pharyngitis or tonsillitis" }, {text: "Allergic or seasonal rhinitis"}, {text: "Heat/Cold Injury"}, {text: "Asthma"}, {text: "Anxiety"}, {text: "Myocardial Infarction"}, {text: "Pulmonary Embolism"}, {text: "Pneumonia, Bronchitis"}, {text: "Deconditioning"}],
+        "flags": [{ text: "Abnormal Vital Signs/Fever > 101F"}, { text: "Shortness of Breath"}, { text: "Cough with or without blood clots or frank blood"}, { text: "Stiff Neck"},{ text: "Altered Mental Status"}, {text: "Cyanosis"}, {text: "ancillary muscles"}, {text: "SIRS Criteria"}, {text: "Airway Swelling"}, {text: "Hives"}, {text: "Heat Injury"}, {text: "Light sensitivity"}, {text: "Pregnant"}, {text: "Seizure"}, {text: "Lightheaded"}],
+            "activity": [{ text: "Quarters Quarantine 14 days" }],
+            "protocol": ["Home, no care/testing required<br/>If symptoms develop contact command</li>"]
         }
     ]        
 

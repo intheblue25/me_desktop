@@ -8,3 +8,7 @@
     width: 25%;
     border-color: black;
 }
+
+.srchItem:hover{
+    background: yellow;
+}

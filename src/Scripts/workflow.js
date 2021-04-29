@@ -1,5 +1,25 @@
 $(document).ready(function () {
-    
+
+    //vitals events
+    $("#tempInput").focus(function () {
+        var input = this;
+        setTimeout(function() {
+            input.setSelectionRange(0, 0);
+        }, 0);
+    });
+    $("#bpInput").focus(function () {
+        var input = this;
+        setTimeout(function() {
+            input.setSelectionRange(0, 0);
+        }, 0);
+    });
+    $("#satInput").focus(function () {
+        var input = this;
+        setTimeout(function() {
+            input.setSelectionRange(0, 0);
+        }, 0);
+    });
+
     $(document).on("click", "#vitalsBtn", function () {
         
         //var childs = Form.children;
@@ -11,8 +31,13 @@ $(document).ready(function () {
             var Name = Form[i].getAttribute('name');
             var Value = Form[i].value;
             vitalsArr.push(Name + ' : ' + Value)
-            if(Form[i].name === "02"){
+            if(Form[i].name === "02 Sat"){
                 Form[i].value = '%';
+            }else if(Form[i].name === "Temp"){
+                //Form[i].value = '&#176; F';
+                document.getElementById(Form[i].id).value = String.fromCharCode(176) + " F"
+            }else if(Form[i].name === "BP"){
+                Form[i].value = '/';
             }else{
                 Form[i].value = '';
             }
@@ -77,6 +102,16 @@ $(document).ready(function () {
                 case 'No':
                     var qNbr = questions[sessionStorage.getItem("algorithm")][qstnNbr].no
                     //updateSymptoms(questions[sessionStorage.getItem("algorithm")][qstnNbr].notreatment)
+                    var treatStatement = questions[sessionStorage.getItem("algorithm")][qstnNbr].treatment
+                    var symptomsArray = JSON.parse(sessionStorage.getItem("symptoms"))
+                    if(symptomsArray != null){
+                        if(symptomsArray.indexOf(treatStatement)){
+                            symptomsArray = symptomsArray.flat()
+                            sessionStorage.removeItem("symptoms",treatStatement)
+                            removeSymptoms(symptomsArray, treatStatement)
+                            sessionStorage.setItem("symptoms", JSON.stringify(symptomsArray))
+                        }
+                    }
                     updateQstn(qNbr)
                     break;
 
@@ -96,7 +131,7 @@ $(document).ready(function () {
             if(btnTxt === "Back"){
                 backfillChkbx()
                 
-            } 
+            }
 
         } else {
 
@@ -192,12 +227,16 @@ $(document).ready(function () {
             sympArrx.push($(v).data('text'));
         });
 
-        if (sympArrx.length > 0) {
+        var filtered = sympArrx.filter(function (el) {
+            return el != null;
+        });
+
+        if (filtered.length > 0) {
             ///////update symptoms state if symptoms
-            if (!sessionStorage.getItem('symptoms', JSON.stringify(sympArrx))) {
-                sessionStorage.setItem('symptoms', JSON.stringify(sympArrx))
+            if (!sessionStorage.getItem('symptoms', JSON.stringify(filtered))) {
+                sessionStorage.setItem('symptoms', JSON.stringify(filtered))
             } else {
-                updateSymptoms(sympArrx)
+                updateSymptoms(filtered)
             }
         }
 
@@ -216,16 +255,20 @@ $(document).ready(function () {
             trtArrx.push($(v).data('text'));
         });
 
-        if (trtArrx.length > 0) {
+        var filtered = trtArrx.filter(function (el) {
+            return el != null;
+          });
+
+        if (filtered.length > 0) {
             ///////update symptoms state if symptoms
-            if (!sessionStorage.getItem('treatment', JSON.stringify(trtArrx))) {
-                sessionStorage.setItem('treatment', JSON.stringify(trtArrx))
+            if (!sessionStorage.getItem('treatment', JSON.stringify(filtered))) {
+                sessionStorage.setItem('treatment', JSON.stringify(filtered))
             } else {
-                updateTreatment(trtArrx)
+                updateTreatment(filtered)
             }
         }
 
-        return trtArrx
+        return filtered
     }
 
     function getRedFlags(algorithm) {
@@ -254,7 +297,7 @@ $(document).ready(function () {
     }
 
     function nxtYesNo(chkBx) {
-        //get answer, figure out next question, 
+        //get answer, figure out next question,
         var qstnNbr = sessionStorage.getItem("qstnNbr")
         //var sympArry = JSON.parse(sessionStorage.getItem("symptoms"))
         var symsumLngth = questions[sessionStorage.getItem("algorithm")][qstnNbr].symSum
@@ -280,6 +323,9 @@ $(document).ready(function () {
         var note = JSON.parse(sessionStorage.getItem("symptoms"))
         if(note){
             note = note.flat()
+            note = note.filter( function( item, index, inputArray ) {
+                   return inputArray.indexOf(item) == index;
+            });
             note = note.map(function(x){ return x.toLowerCase()})
         }
         var treat = JSON.parse(sessionStorage.getItem("treatment"))
@@ -297,7 +343,7 @@ $(document).ready(function () {
             }else{
                 $("#note").append('<p>The patient presented with ' +  checkCase(topic) + toSentence(checkCase(note), topic) + '.')
             }
-        }else{   
+        }else{
         
             $("#note").append('<p>The patient presented with ' +  checkCase(topic) + '.')
         }
@@ -316,7 +362,7 @@ $(document).ready(function () {
             
             for(var i=0; i<str.length; i++){
 
-            const abbWrds = ["iud ","adtmc ", "adtmc", "medpros", "hepatitis b", "hepatitis c", "hiv ", " pha", "uds", " uti", "gi ", "upstf", "moi ", " rom", "pms", " ekg", "fh", " tbi", "aem", "foosh", " tm", "bmi", " iv", "pcc", "abcp", "ivf", "heent", " moi"]
+            const abbWrds = ["iud ","adtmc ", "adtmc", "medpros", "hepatitis b", "hepatitis c", "hiv ", " pha", "uds", " uti", "gi ", "upstf", "moi ", " rom", "pms", " ekg", "fh", " tbi", "aem", "foosh", " tm", "bmi", " iv", "pcc", "abcp", "ivf", "heent", " moi", " sob "]
 
             const found = new RegExp(abbWrds.join("|")).exec(str[i])
 
@@ -352,24 +398,36 @@ $(document).ready(function () {
         }
         return newSent
     }
+    
+    function removeSymptoms(arr, value) {
+      var i = 0;
+      while (i < arr.length) {
+        if (arr[i] === value) {
+          arr.splice(i, 1);
+        } else {
+          ++i;
+        }
+      }
+      return arr;
+    }
 
     function toSentence(arr, section) {
         let flag = false
-        if(section[0].includes("vasectomy") || section[0].includes("traveling") || section[0].includes("station") || section[0].includes("weight") || section[0].includes("immunization") || section[0].includes("poisonous")){
+        if(section[0].includes("vasectomy") || section[0].includes("traveling") || section[0].includes("station") || section[0].includes("weight") || section[0].includes("immunization") || section[0].includes("poisonous") || section[0].includes("glasses")){
             flag = true
         }
 
         if(section[0].includes("request") && arr.length<2 && flag==false){
             return ' for ' + arr
         }else if(section[0].includes("request") && arr.length>1 && flag==false){
-            return ' for ' + arr.slice(0, -2).join(', ') + 
-            (arr.slice(0, -2).length ? ', ' : '') + 
+            return ' for ' + arr.slice(0, -2).join(', ') +
+            (arr.slice(0, -2).length ? ', ' : '') +
             arr.slice(-2).join(' and ');
         }else if (arr.length<2){
             return ' and ' + arr;
         }else{
-            return arr.slice(0, -2).join(', ') + 
-            (arr.slice(0, -2).length ? ', ' : '') + 
+            return arr.slice(0, -2).join(', ') +
+            (arr.slice(0, -2).length ? ', ' : '') +
             arr.slice(-2).join(' and ');
         }
     }
@@ -380,8 +438,8 @@ $(document).ready(function () {
         }else if (arr.length<2){
             return ' and ' + arr;
         }else{
-            return arr.slice(0, -2).join(', ') + 
-            (arr.slice(0, -2).length ? ', ' : '') + 
+            return arr.slice(0, -2).join(', ') +
+            (arr.slice(0, -2).length ? ', ' : '') +
             arr.slice(-2).join(' and ');
         }
     }
@@ -414,7 +472,7 @@ $(document).ready(function () {
                 for (var i = 0; i < qstn.screen.length; i++) {
                     $('#qstn').append('</div><button class="qstnBtn w3-button w3-round w3-yellow w3-margin w3-center" data-section="' + qstn.screen[i].sect + '">' + qstn.screen[i].text + '</button>')
                 }
-                $('#qstn').append('</div><button class="qstnBtn w3-button w3-round w3-blue w3-margin w3-center" data-section="' + qstn.treatment + '">Final</button><!--<div class="divider"/><button class="qstnBtn w3-button w3-blue w3-center">Back</button>-->')
+                $('#qstn').append('</div><button class="qstnBtn w3-button w3-round w3-blue w3-margin w3-center" data-section="' + qstn.treatment + '">Final</button><div class="divider"/><button class="qstnBtn w3-button w3-round w3-blue w3-center">Back</button>')
 
             } else {
 
@@ -431,7 +489,7 @@ $(document).ready(function () {
                                 $('#qstn').append('<div class="container"><label>' + " " + qstn.narrative[i].text + '<input class="w3-check" type="checkBox" value="' + qstn.narrative[i].val + '" data-text="' + qstn.narrative[i].text + '"><span class="checkmark"></span></label></div>')
                             }
                         }
-                        $('#qstn').append('<div class="w3-container"><div>' + qstn.treatment + '</div></div><div class="qstnBtn w3-button w3-round w3-blue w3-center">Final</div><!--<div class="divider"/><button class="qstnBtn w3-button w3-round w3-blue w3-center">Back</button>-->')
+                        $('#qstn').append('<div class="w3-container"><div>' + qstn.treatment + '</div></div><div class="qstnBtn w3-button w3-round w3-blue w3-center">Final</div><div class="divider"/><button class="qstnBtn w3-button w3-round w3-blue w3-center">Back</button>')
                     } else {
                         $('#qstn').append('<div class="w3-container"><div>' + qstn.treatment + '</div></div><div class="qstnBtn w3-button w3-round w3-blue w3-center">Yes</div><div class="divider"/><div class="qstnBtn w3-button w3-round w3-blue">No</div>')
                     }
@@ -456,7 +514,7 @@ $(document).ready(function () {
                             $('#symplist').append('<div class="container"><label>' + " " + qstn.symptoms[i].sym + '<input class="w3-check" type="checkBox" value="' + qstn.symptoms[i].val + '" data-text="' + qstn.symptoms[i].sym + '"><span class="checkmark"></span></label></div>')
                         }
                         if(qstnNbr > 0){
-                            $('#symplist').append('<div><button class="qstnBtn w3-button w3-round w3-blue w3-center">Next</button><!--<div class="divider"/><button class="qstnBtn w3-button w3-blue w3-center">Back</button></div>-->')
+                            $('#symplist').append('<div><button class="qstnBtn w3-button w3-round w3-blue w3-center">Next</button><div class="divider"/><button class="qstnBtn w3-button w3-round w3-blue w3-center">Back</button></div>')
                         }else{
                             $('#symplist').append('<div><button class="qstnBtn w3-button w3-round w3-blue w3-center">Next</button><div class="divider"/></div>')
                         }
@@ -556,7 +614,7 @@ $(document).ready(function () {
         
             if((sessionStorage['qArray'])){
                 values.push(sessionStorage.getItem('qArray'))
-            }else{  
+            }else{
                 values.push(sessionStorage.getItem('qstnNbr'))
             }
         
@@ -572,8 +630,12 @@ $(document).ready(function () {
         
     }
 
+    function moveCursor(x){
+        
+        setTimeout(function() {
+            x.setSelectionRange(0, 0);
+        }, 0);
+    }
+    
+
 });
-
-
-
-
