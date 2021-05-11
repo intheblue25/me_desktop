@@ -1,12 +1,22 @@
 const { app, BrowserWindow, Menu } = require('electron')
 const url = require('url')
 const path = require('path')
+const Store = require('electron-store')
 
+const store = new Store();
+// const nativeImage = requre('electron').nativeImage;
+//     var image = nativeImage.createFromPath(__dirname + '/assetts/Images/icon.png');
+//     image.setTemplateImage(true);
 
 let win
 
 function createWindow() {
-    win = new BrowserWindow({ width: 1200, height: 800 })
+    win = new BrowserWindow({ 
+        width: 1200, 
+        height: 800,
+        icon: path.join(__dirname, 'assetts/icons/png/desktop_quick.png') 
+    
+    })
 
     win.loadURL(url.format({
         pathname: path.join(__dirname, 'src/index.html'),

@@ -1,18 +1,32 @@
 {
-  "name": "medicedge_desktop",
-  "version": "1.0.0",
+  "name": "medicedge",
+  "version": "2.0.0",
   "description": "desktop version of MedicEdge",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "postinstall": "electron-builder install-app-deps"
   },
-  "author": "Christian Olse",
+  "author": "Christian Olsen, Smart Health Solutions, LLC",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^10.1.1"
+    "electron": "^12.0.7",
+    "electron-builder": "^22.11.1"
   },
   "build": {
-    "productName":"MedicEdge Desktop"
+    "productName": "MedicEdge Desktop",
+    "appId": "com.smarthealthsol.medicedge"
+  },
+  "mac": {
+    "icon": "./assets/icons/icon.png"
+  },
+  "win": {
+    "icon":"./assetts/icons/icon.png"
+  },
+  "dependencies": {
+    "electron-store": "^8.0.0"
   }
 }
