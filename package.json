@@ -24,9 +24,10 @@
     "icon": "./assets/icons/icon.png"
   },
   "win": {
-    "icon":"./assetts/icons/icon.png"
+    "icon": "./assetts/icons/icon.png"
   },
   "dependencies": {
-    "electron-store": "^8.0.0"
+    "electron-store": "^8.0.0",
+    "jquery": "^3.6.0"
   }
 }

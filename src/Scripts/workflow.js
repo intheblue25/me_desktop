@@ -1,3 +1,4 @@
+var $ = require('jquery')
 $(document).ready(function () {
 
     //vitals events
@@ -472,7 +473,7 @@ $(document).ready(function () {
                 for (var i = 0; i < qstn.screen.length; i++) {
                     $('#qstn').append('</div><button class="qstnBtn w3-button w3-round w3-yellow w3-margin w3-center" data-section="' + qstn.screen[i].sect + '">' + qstn.screen[i].text + '</button>')
                 }
-                $('#qstn').append('</div><button class="qstnBtn w3-button w3-round w3-blue w3-margin w3-center" data-section="' + qstn.treatment + '">Final</button><div class="divider"/><button class="qstnBtn w3-button w3-round w3-blue w3-center">Back</button>')
+                $('#qstn').append('</div><button class="qstnBtn w3-button w3-round w3-blue w3-margin w3-center" data-section="' + qstn.treatment + '">Final</button>&nbsp;<div class="divider"/><button class="qstnBtn w3-button w3-round w3-blue w3-center">Back</button>')
 
             } else {
 
@@ -489,9 +490,9 @@ $(document).ready(function () {
                                 $('#qstn').append('<div class="container"><label>' + " " + qstn.narrative[i].text + '<input class="w3-check" type="checkBox" value="' + qstn.narrative[i].val + '" data-text="' + qstn.narrative[i].text + '"><span class="checkmark"></span></label></div>')
                             }
                         }
-                        $('#qstn').append('<div class="w3-container"><div>' + qstn.treatment + '</div></div><div class="qstnBtn w3-button w3-round w3-blue w3-center">Final</div><div class="divider"/><button class="qstnBtn w3-button w3-round w3-blue w3-center">Back</button>')
+                        $('#qstn').append('<div class="w3-container"><div>' + qstn.treatment + '</div></div><button class="qstnBtn w3-button w3-round w3-blue w3-center">Final</button>&nbsp;<div class="divider"/><button class="qstnBtn w3-button w3-round w3-blue w3-center">Back</button>')
                     } else {
-                        $('#qstn').append('<div class="w3-container"><div>' + qstn.treatment + '</div></div><div class="qstnBtn w3-button w3-round w3-blue w3-center">Yes</div><div class="divider"/><div class="qstnBtn w3-button w3-round w3-blue">No</div>')
+                        $('#qstn').append('<div class="w3-container"><div>' + qstn.treatment + '</div></div><div class="qstnBtn w3-button w3-round w3-blue w3-center">Yes</div><div class="divider"/>&nbsp;<div class="qstnBtn w3-button w3-round w3-blue">No</div>')
                     }
                 } else {
 
@@ -514,7 +515,7 @@ $(document).ready(function () {
                             $('#symplist').append('<div class="container"><label>' + " " + qstn.symptoms[i].sym + '<input class="w3-check" type="checkBox" value="' + qstn.symptoms[i].val + '" data-text="' + qstn.symptoms[i].sym + '"><span class="checkmark"></span></label></div>')
                         }
                         if(qstnNbr > 0){
-                            $('#symplist').append('<div><button class="qstnBtn w3-button w3-round w3-blue w3-center">Next</button><div class="divider"/><button class="qstnBtn w3-button w3-round w3-blue w3-center">Back</button></div>')
+                            $('#symplist').append('<div><button class="qstnBtn w3-button w3-round w3-blue w3-center">Next</button>&nbsp;<div class="divider"/><button class="qstnBtn w3-button w3-round w3-blue w3-center">Back</button></div>')
                         }else{
                             $('#symplist').append('<div><button class="qstnBtn w3-button w3-round w3-blue w3-center">Next</button><div class="divider"/></div>')
                         }

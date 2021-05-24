@@ -12,9 +12,13 @@ let win
 
 function createWindow() {
     win = new BrowserWindow({ 
-        width: 1200, 
-        height: 800,
-        icon: path.join(__dirname, 'assetts/icons/png/desktop_quick.png') 
+        width: 1400, 
+        height: 1000,
+        icon: path.join(__dirname, 'assetts/icons/png/desktop_quick.png'),
+        webPreferences:{
+            nodeIntegration: true,
+            contextIsolation: false
+        } 
     
     })
 
